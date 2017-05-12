@@ -24,5 +24,6 @@ This code is distributed under the MIT license.
 Prerequisites:
 --------------
 
+- future
 - pyparsing
 - GraphViz
