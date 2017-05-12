@@ -29,8 +29,8 @@ import tempfile
 import copy
 try:
     import dot_parser
-except Exception, e:
-    print "Couldn't import dot_parser, loading of dot files will not be possible."
+except Exception as e:
+    print("Couldn't import dot_parser, loading of dot files will not be possible.")
 
 GRAPH_ATTRIBUTES = set( ['Damping', 'K', 'URL', 'aspect', 'bb', 'bgcolor',
     'center', 'charset', 'clusterrank', 'colorscheme', 'comment', 'compound',
@@ -90,7 +90,7 @@ CLUSTER_ATTRIBUTES = set( ['K', 'URL', 'bgcolor', 'color', 'colorscheme',
 #
 class frozendict(dict):
     def _blocked_attribute(obj):
-        raise AttributeError, "A frozendict cannot be modified."
+        raise AttributeError("A frozendict cannot be modified.")
     _blocked_attribute = property(_blocked_attribute)
 
     __delitem__ = __setitem__ = clear = _blocked_attribute
@@ -501,10 +501,10 @@ def find_graphviz():
                         path = os.path.join(path, "bin")
                         progs = __find_executables(path)
                         if progs is not None :
-                            #print "Used Windows registry"
+                            #print("Used Windows registry")
                             return progs
 
-                except Exception, excp:
+                except Exception as excp:
                     #raise excp
                     pass
                 else:
@@ -519,7 +519,7 @@ def find_graphviz():
         for path in os.environ['PATH'].split(os.pathsep):
             progs = __find_executables(path)
             if progs is not None :
-                #print "Used path"
+                #print("Used path")
                 return progs
 
     # Method 3 (Windows only)
@@ -546,7 +546,7 @@ def find_graphviz():
 
         if progs is not None :
 
-            #print "Used default install location"
+            #print("Used default install location")
             return progs
 
 
@@ -558,7 +558,7 @@ def find_graphviz():
 
         progs = __find_executables(path)
         if progs is not None :
-            #print "Used path"
+            #print("Used path")
             return progs
 
     # Failed to find GraphViz
@@ -923,7 +923,7 @@ class Edge(Common):
         """
 
         if not isinstance(edge, Edge):
-            raise Error, "Can't compare and edge to a non-edge object."
+            raise Error("Can't compare and edge to a non-edge object.")
 
         if self.get_parent_graph().get_top_graph_type() == 'graph':
 
@@ -1073,7 +1073,7 @@ class Graph(Common):
             self.obj_dict['attributes'] = dict(attrs)
 
             if graph_type not in ['graph', 'digraph']:
-                raise Error, 'Invalid type "%s". Accepted graph types are: graph, digraph, subgraph' % graph_type
+                raise Error('Invalid type "%s". Accepted graph types are: graph, digraph, subgraph' % graph_type)
 
 
             self.obj_dict['name'] = quote_if_necessary(graph_name)
@@ -2020,7 +2020,7 @@ class Dot(Graph):
                 'Program terminated with status: %d. stderr follows: %s' % (
                     status, stderr_output) )
         elif stderr_output:
-            print stderr_output
+            print(stderr_output)
 
         # For each of the image files...
         #
