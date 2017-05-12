@@ -39,7 +39,6 @@ config = dict(
         'Topic :: Scientific/Engineering :: Visualization',
         'Topic :: Software Development :: Libraries :: Python Modules'],
     install_requires = ['pyparsing', 'setuptools'],
-    data_files = [('.', ['LICENSE', 'README.md'])])
 
 
 if sys.version_info >= (3,):
